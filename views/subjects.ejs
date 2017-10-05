@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Subjects</title>
+</head>
+<body>
+  <table>
+    <tr>
+      <th>Subject ID</th>
+      <th>Subject Name</th>
+      <th>Created At</th>
+      <th>Updated At</th>
+    </tr>
+    <% for(let i = 0; i < Subjects.length; i++){ %>
+    <tr>
+      <td><%=Subjects[i].id%></td>
+      <td><%=Subjects[i].subject_name%></td>
+      <td><%=Subjects[i].createdAt%></td>
+      <td><%=Subjects[i].updatedAt%></td>
+  </tr>
+  <% } %>
+  </table>
+</body>
+</html>

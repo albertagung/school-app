@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Add Student</title>
+</head>
+<body>
+  <%if(hasOwnProperty('error')){%>
+    <h1>Emailnya yang bener oi......</h1>
+  <%}%>
+  <form action="/students/add" method="post">
+    Student First Name:<br>
+    <input type="text" name="first_name">
+    <br>
+    Student Last Name:<br>
+    <input type="text" name="last_name">
+    <br>
+    Student Email:<br>
+    <input type="text" name="email">
+    <br><br>
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>

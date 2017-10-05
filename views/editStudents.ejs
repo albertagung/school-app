@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Edit Student</title>
+</head>
+<body>
+  <form action="/students/edit/<%=Student[0].id%>" method="post">
+    Student First Name:<br>
+    <input type="text" name="first_name" value="<%=Student[0].first_name%>">
+    <br>
+    Student Last Name:<br>
+    <input type="text" name="last_name" value="<%=Student[0].last_name%>">
+    <br>
+    Student Email:<br>
+    <input type="text" name="email" value="<%=Student[0].email%>">
+    <br><br>
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>
