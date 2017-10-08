@@ -14,9 +14,9 @@
       <th>Last Name</th>
       <th>Full Name</th>
       <th>Email</th>
-      <th>Created At</th>
-      <th>Updated At</th>
+      <th>Actions</th>
     </tr>
+    <%console.log(Student)%>
     <%for(let i = 0; i < Student.length; i++){%>
     <tr>
       <td><%=Student[i].id%></td>
@@ -24,8 +24,7 @@
       <td><%=Student[i].last_name%></td>
       <td><%=Student[i].getFullname()%></td>
       <td><%=Student[i].email%></td>
-      <td><%=Student[i].createdAt%></td>
-      <td><%=Student[i].updatedAt%></td>
+      <td><a href="/students/edit/<%=Student[i].id%>/addsubject">Add Subjects</td>
       <td><a href="/students/edit/<%=Student[i].id%>">Edit</td>
       <td><a href="/students/delete/<%=Student[i].id%>">Delete</td>
     </tr>

@@ -13,8 +13,7 @@
       <th>First Name</th>
       <th>Last Name</th>
       <th>Email</th>
-      <th>Created At</th>
-      <th>Updated At</th>
+      <th>Subject</th>
     </tr>
     <% for(let i = 0; i < Teacher.length; i++){ %>
     <tr>
@@ -22,8 +21,13 @@
       <td><%= Teacher[i].first_name %></td>
       <td><%= Teacher[i].last_name %></td>
       <td><%= Teacher[i].email %></td>
-      <td><%= Teacher[i].createdAt %></td>
-      <td><%= Teacher[i].updatedAt %></td>
+      <%if(Teacher[i].Subject){%>
+      <td><%= Teacher[i].Subject.subject_name %></td>
+      <%} else {%>
+      <td>Unassigned</td>
+      <%}%>
+      <td><a href="/teachers/edit/<%=Teacher[i].id%>">Edit</td>
+      <td><a href="/teachers/delete/<%=Teacher[i].id%>">Delete</td>
     </tr>
     <% } %>
   </table>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Add Subject</title>
+</head>
+<body>
+  <h4>First Name: <%=Student[0].first_name%></h4>
+  <h4>Last Name: <%=Student[0].last_name%></h4>
+  <h4>Email: <%=Student[0].email%></h4>
+  <br>
+  <form action="/students/edit/<%=Student[0].id%>/addsubject" method="post">
+    <select name="SubjectId">
+      <%for(let i = 0; i< Subjects.length; i++){%>
+      <option value="<%=Subjects[i].id%>"><%=Subjects[i].subject_name%></option>
+      <%}%>
+    </select>
+    <br><br>
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>

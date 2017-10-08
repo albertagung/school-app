@@ -6,15 +6,13 @@ module.exports = (sequelize, DataTypes) => {
     email: {type: DataTypes.STRING, validate: {
       isEmail: true}
     }
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
   })
   Student.prototype.getFullname = function () {
     return `${this.first_name} ${this.last_name}`
   }
+  Student.associate = function (model) {
+    Student.hasMany(model.student_subject);
+    Student.belongsToMany(model.Subjects,{through:'student_subject'})
+  };
   return Student;
 };
