@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Enrolled Student</title>
+  <%- include('./partials/head')%>
 </head>
-<body>
-  <%if(student_subject[0] !== undefined){%>
-  <h2><%=student_subject[0].Subject.subject_name%></h2>
-  <%}else{%>
-  <h2>Please enroll at least ONE student first</h2>
-  <%}%>
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Score</th>
-    </tr>
-    <%for(let i = 0; i < student_subject.length; i++){%>
-    <tr>
-      <td><%=student_subject[i].Student.getFullname()%></td>
-      <% if (student_subject[i].score) { %>
-      <td><%= student_subject[i].score %></td>
-      <% } else { %>
-      <td><a href="/subjects/<%= student_subject[i].id %>/givescore">GIVE SCORE</a></td>
-      <% } %>
-    </tr>
+<body class="container-fluid">
+  <header>
+    <%- include('./partials/header')%>
+  </header>
+    <%if(student_subject[0] !== undefined){%>
+    <h2><%=student_subject[0].Subject.subject_name%></h2>
+    <%}else{%>
+    <h2>Please enroll at least ONE student first</h2>
     <%}%>
-  </table>
+    <table class="table">
+      <tr>
+        <th>Name</th>
+        <th>Score</th>
+      </tr>
+      <%for(let i = 0; i < student_subject.length; i++){%>
+      <tr>
+        <td><%=student_subject[i].Student.getFullname()%></td>
+        <% if (student_subject[i].score) { %>
+        <td><%= student_subject[i].score %></td>
+        <% } else { %>
+        <td><a href="/subjects/<%= student_subject[i].id %>/givescore">GIVE SCORE</a></td>
+        <% } %>
+      </tr>
+      <%}%>
+    </table>
+  <footer>
+    <%- include('./partials/footer')%>
+  </footer>
 </body>
 </html>

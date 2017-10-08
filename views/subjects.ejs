@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Subjects</title>
+  <%- include('./partials/head')%>
 </head>
-<body>
-  <table>
-    <tr>
-      <th>Subject ID</th>
-      <th>Subject Name</th>
-      <th>Teachers</th>
-      <th>Actions</th>
+<body class="container-fluid">
+  <header>
+    <%- include('./partials/header')%>
+  </header>
+    <table class="table">
+      <tr>
+        <th>Subject ID</th>
+        <th>Subject Name</th>
+        <th>Teachers</th>
+        <th>Actions</th>
+      </tr>
+      <% for(let i = 0; i < Subjects.length; i++){ %>
+      <tr>
+        <td><%=Subjects[i].id%></td>
+        <td><%=Subjects[i].subject_name%></td>
+        <td>
+          <ol>
+            <%for(let y = 0; y < Subjects[i].Teachers.length; y++){%>
+            <li><%=Subjects[i].Teachers[y].getFullname()%></li>
+            <%}%>
+          </ol>
+        </td>
+        <td><a href="/subjects/<%=Subjects[i].id%>/enrolledstudent">Enrolled Student</td>
     </tr>
-    <% for(let i = 0; i < Subjects.length; i++){ %>
-    <tr>
-      <td><%=Subjects[i].id%></td>
-      <td><%=Subjects[i].subject_name%></td>
-      <td>
-        <ol>
-          <%for(let y = 0; y < Subjects[i].Teachers.length; y++){%>
-          <li><%=Subjects[i].Teachers[y].getFullname()%></li>
-          <%}%>
-        </ol>
-      </td>
-      <td><a href="/subjects/<%=Subjects[i].id%>/enrolledstudent">Enrolled Student</td>
-  </tr>
-  <% } %>
-  </table>
+    <% } %>
+    </table>
+  <footer>
+    <%- include('./partials/footer')%>
+  </footer>
 </body>
 </html>

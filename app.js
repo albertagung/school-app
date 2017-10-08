@@ -5,10 +5,13 @@ let bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine','ejs')
 
+let index = require('./routers/index.js')
 let teachers = require('./routers/teacherRoute.js')
 let subjects = require('./routers/subjectRoute.js')
 let students = require('./routers/studentRoute.js')
 
+//Index
+app.use('/',index)
 //Teachers
 app.use('/teachers',teachers)
 //Subjects
