@@ -1,5 +1,5 @@
 'use strict';
-let getFullnam = require('../helper/getFullname')
+let getFullnam = require('../helper/getFullName')
 module.exports = (sequelize, DataTypes) => {
   var Student = sequelize.define('Student', {
     first_name: DataTypes.STRING,
