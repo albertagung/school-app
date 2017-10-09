@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="#">SMA Negri 6.5 Petang</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -34,7 +34,17 @@
           <a class="dropdown-item" href="/students">All Students</a>
           <a class="dropdown-item" href="/students/add">Add Student</a>
         </div>
+      <% if(session) {%>
       </li>
+      <li class="nav-item">
+        <a role="button" href="/logout" class="btn btn-dark">Log Out</a>
+      </li>
+      <% } else { %>
+      </li>
+      <li class="nav-item">
+        <a role="button" href="/login" class="btn btn-dark">Log In</a>
+      </li>
+      <% } %>
     </ul>
   </div>
 </nav>

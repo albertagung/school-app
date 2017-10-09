@@ -2,15 +2,23 @@ let express = require('express')
 let router = express.Router()
 let model = require('../models/')
 
+router.use(function(req,res,next){
+  if(req.session.role === 'headmaster' || req.session.role === 'teacher' || req.session.role === 'academic'){
+    next()
+  }
+  else{
+    res.render('index',{session:req.session.username,errMsg:''})
+  }
+})
 
 router.get('/',function(req,res){
   model.Student.findAll({include:[model.Subjects]}).then(function(studentsData){
-    res.render('students',{Student:studentsData})
+    res.render('students',{Student:studentsData,session:req.session.username})
   })
 })
 
 router.get('/add',function(req,res){
-  res.render('addStudent')
+  res.render('addStudent',{session:req.session.username})
 })
 
 router.post('/add',function(req,res){
@@ -29,7 +37,7 @@ router.post('/add',function(req,res){
 
 router.get('/edit/:id',function(req,res){
   model.Student.findAll({where:{id:req.params.id}}).then(function(studentsData){
-    res.render('editStudents',{Student:studentsData});
+    res.render('editStudents',{Student:studentsData,session:req.session.username});
   })
 })
 
@@ -53,7 +61,7 @@ router.get('/delete/:id',function(req,res){
 router.get('/edit/:id/addsubject',function(req,res){
   model.Student.findAll({where:{id:req.params.id}}).then(function(studentsData){
     model.Subjects.findAll().then(function(subjectsData){
-      res.render('addSubject',{Student:studentsData,Subjects:subjectsData})
+      res.render('addSubject',{Student:studentsData,Subjects:subjectsData,session:req.session.username})
     })
   })
 })

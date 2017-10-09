@@ -1,4 +1,5 @@
 'use strict';
+let getFullname = require('../helper/getFullname')
 module.exports = (sequelize, DataTypes) => {
   var Teacher = sequelize.define('Teacher', {
     first_name: DataTypes.STRING,
@@ -12,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     Teacher.belongsTo(model.Subjects)
   }
   Teacher.prototype.getFullname = function () {
-    return `${this.first_name} ${this.last_name}`
+    return getFullname(this.first_name,this.last_name)
   }
   return Teacher;
 };

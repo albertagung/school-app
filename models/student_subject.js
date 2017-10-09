@@ -1,7 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var student_subject = sequelize.define('student_subject', {
-    // id: {type: DataTypes.INTEGER, primaryKey: true},
     SubjectId: DataTypes.INTEGER,
     StudentId: DataTypes.INTEGER,
     score: DataTypes.STRING

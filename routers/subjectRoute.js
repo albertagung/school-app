@@ -2,6 +2,14 @@ let express = require('express')
 let router = express.Router()
 let model = require('../models/')
 
+router.use(function(req,res,next){
+  if(req.session.role === 'academic' || req.session.role === 'headmaster'){
+    next()
+  }
+  else{
+    res.render('index',{session:req.session.username,errMsg:''})
+  }
+})
 
 router.get('/',function(req,res){
   model.Subjects.findAll({
@@ -10,10 +18,7 @@ router.get('/',function(req,res){
       model.Student
     ]
   }).then(function(subjectsData){
-    res.render('subjects',
-    {
-      Subjects:subjectsData
-    })
+      res.render('subjects',{Subjects:subjectsData,session:req.session.username})
   })
 })
 
@@ -35,7 +40,8 @@ router.get('/:id/enrolledstudent',function(req,res){
   }).then(function(studentSubjectData){
     res.render('enrolledStudent',
     {
-      student_subject:studentSubjectData
+      student_subject:studentSubjectData,
+      session:req.session.username
     })
   })
 })
@@ -57,7 +63,8 @@ router.get('/:id/givescore',function(req,res){
     ]
   }).then(function(studentSubjectData){
     res.render('giveScore',{
-      student_subject:studentSubjectData
+      student_subject:studentSubjectData,
+      session:req.session.username
     })
   })
 })
