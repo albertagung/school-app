@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('./partials/head')%>
+</head>
+<body class="container-fluid">
+  <header>
+    <%- include('./partials/header')%>
+  </header>
+    <h4>Student Name: <%=student_subject[0].Student.getFullName()%></h4>
+    <h4>Subject Name: <%=student_subject[0].Subject.subject_name%></h4>
+    <h4>Score:
+      <form action="/subjects/<%= student_subject[0].id%>/givescore" method="post">
+        <input type="text" name="score">
+        <br><br>
+        <input type="submit" value="Submit">
+      </form>
+    </h4>
+    <br>
+  <footer>
+    <%- include('./partials/footer')%>
+  </footer>
+</body>
+</html>

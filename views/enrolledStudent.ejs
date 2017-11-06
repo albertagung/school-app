@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('./partials/head')%>
+</head>
+<body class="container-fluid">
+  <header>
+    <%- include('./partials/header')%>
+  </header>
+    <%if(student_subject[0] !== undefined){%>
+    <h2><%=student_subject[0].Subject.subject_name%></h2>
+    <%}else{%>
+    <h2>Please enroll at least ONE student first</h2>
+    <%}%>
+    <table class="table">
+      <tr>
+        <th>Name</th>
+        <th>Score</th>
+      </tr>
+      <%for(let i = 0; i < student_subject.length; i++){%>
+      <tr>
+        <td><%=student_subject[i].Student.getFullName()%></td>
+        <% if (student_subject[i].score) { %>
+        <td><%= student_subject[i].score %></td>
+        <% } else { %>
+        <td><a href="/subjects/<%= student_subject[i].id %>/givescore">GIVE SCORE</a></td>
+        <% } %>
+      </tr>
+      <%}%>
+    </table>
+  <footer>
+    <%- include('./partials/footer')%>
+  </footer>
+</body>
+</html>

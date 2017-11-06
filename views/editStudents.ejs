@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('./partials/head')%>
+</head>
+<body class="container-fluid">
+  <header>
+    <%- include('./partials/header')%>
+  </header>
+    <form action="/students/edit/<%=Student[0].id%>" method="post">
+      Student First Name:<br>
+      <input type="text" name="first_name" value="<%=Student[0].first_name%>">
+      <br>
+      Student Last Name:<br>
+      <input type="text" name="last_name" value="<%=Student[0].last_name%>">
+      <br>
+      Student Email:<br>
+      <input type="text" name="email" value="<%=Student[0].email%>">
+      <br><br>
+      <input type="submit" value="Submit">
+    </form>
+  <footer>
+    <%- include('./partials/footer')%>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('./partials/head')%>
+</head>
+<body class="container-fluid">
+  <header>
+    <%- include('./partials/header')%>
+  </header>
+    <h4>First Name: <%=Student[0].first_name%></h4>
+    <h4>Last Name: <%=Student[0].last_name%></h4>
+    <h4>Email: <%=Student[0].email%></h4>
+    <br>
+    <form action="/students/edit/<%=Student[0].id%>/addsubject" method="post">
+      <select name="SubjectId">
+        <%for(let i = 0; i< Subjects.length; i++){%>
+        <option value="<%=Subjects[i].id%>"><%=Subjects[i].subject_name%></option>
+        <%}%>
+      </select>
+      <br><br>
+      <input type="submit" value="Submit">
+    </form>
+  <footer>
+    <%- include('./partials/footer')%>
+  </footer>
+</body>
+</html>

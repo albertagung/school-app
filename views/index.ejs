@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('./partials/head')%>
+</head>
+<body class="container-fluid">
+  <header>
+    <%- include('./partials/header')%>
+  </header>
+  <% if(hasOwnProperty('errMsg')){ %>
+  <div class="alert alert-warning" role="alert">
+    You're not allowed to access this page!<br>
+    <ul>
+      <li>Teachers can only access: STUDENT</li>
+      <li>Academics can only access: STUDENT and SUBJECT</li>
+      <li>Headmasters can only access: STUDENT, SUBJECT, and TEACHER</li>
+    </ul><br>
+    Please re-logged in using the correct role!
+  </div>
+  <% } %>
+  <div class="jumbotron">
+    <h1>Welcome to SMA Negri 6.5 Petang admin panel!</h1>
+  </div>
+  <footer>
+    <%- include('./partials/footer')%>
+  </footer>
+</body>
+</html>
